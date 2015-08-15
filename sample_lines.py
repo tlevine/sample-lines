@@ -71,7 +71,14 @@ def main():
             return simple_random(args.n, fp)
 
     for line in sample(args.file):
-        sys.stdout.write(line)
+        try:
+            sys.stdout.write(line)
+            sys.stdout.flush()
+        except (BrokenPipeError, IOError):
+            def f(*args, **kwargs):
+                pass
+            sys.stdout.write = sys.stderr.write = f
+            break
 
 if __name__ == '__main__':
     main()
