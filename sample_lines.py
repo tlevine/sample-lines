@@ -34,9 +34,9 @@ def systematic(n, fp, repetitions = 1):
     if interval == 0:
         interval = 1
 
-    for repetition in range(repetitions):
-        offset_adjustment = randint(0, interval)
-        for base_offset in range(file_start, file_end, interval):
+    offset_adjustments = list(repeat(randint(0, interval), repetitions))
+    for base_offset in range(file_start, file_end, interval):
+        offset_adjustment in offset_adjustments:
             offset = base_offset + offset_adjustment
             fp.seek(offset)
             fp.readline()

@@ -28,6 +28,12 @@ See the help for documentation. ::
       --repeat REPEAT, -r REPEAT
                             Number of repetitions for systematic sampling
 
+Samples are with replacement and weighted by line length. The probability
+of selecting a line is proportional to its line length. This allows us to
+sample very quickly, but it makes this approach appropriate only if your
+file has reasonably consistent line lengths or if you don't care about
+short lines.
+
 How fast
 ----------
 Consider this 1-gigabyte CSV file. ::
