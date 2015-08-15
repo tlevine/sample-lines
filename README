@@ -29,10 +29,11 @@ See the help for documentation. ::
                             Number of repetitions for systematic sampling
 
 Samples are with replacement and weighted by line length. The probability
-of selecting a line is proportional to its line length. This allows us to
+of selecting a line is proportional the length of the previous line.
+This allows us to
 sample very quickly, but it makes this approach appropriate only if your
-file has reasonably consistent line lengths or if you don't care about
-short lines.
+file has reasonably consistent line lengths or at least if there is no
+periodic variation in line length.
 
 How fast
 ----------
@@ -49,6 +50,14 @@ Running ``wc`` took three seconds. ::
     real    0m3.789s
     user    0m3.560s
     sys     0m0.190s
+
+Here's how long it takes to parse the whole file. ::
+
+    $ time python3 -c 'for line in open("big-file.csv"): pass'
+
+    real    0m2.892s
+    user    0m2.641s
+    sys     0m0.245s
 
 ``sample-lines`` is much faster. Here's a simple random sample of 40 lines, ::
 
