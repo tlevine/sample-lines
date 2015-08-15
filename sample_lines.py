@@ -1,3 +1,5 @@
+import argparse
+
 def simple_random(n, fp):
     '''
     with replacement
@@ -22,7 +24,7 @@ def simple_random(n, fp):
         if lines_emitted == 0 and i > 1000:
             raise EnvironmentError('It appears that this file contains no line breaks.')
 
-def systematic(n, fp, offset = 0, repetitions = 1):
+def systematic(n, fp, repetitions = 1):
     file_start = fp.tell()
     file_end = fp.seek(0, 2)
     interval = int((file_end - file_start) / n)
@@ -39,3 +41,17 @@ def systematic(n, fp, offset = 0, repetitions = 1):
             
             if len(line) > 0 and line[-1] == '\n':
                 yield line
+
+argparser = argparse.ArgumentParser('Estimate the length of a line in a file.')
+argparser.add_argument('file', type = argparse.FileType('r'))
+argparser.add_argument('--sample-size', '-n', type = int, default = 100, dest = 'n',
+                       help = 'Number of lines to emit')
+argparser.add_argument('--method', '-m', choices = ('simple-random', 'systematic'),
+                       default = 'simple-random', help = 'Sampling method')
+argparser.add_argument('--repeat', '-r', type = int, default = 1,
+                       help = 'Number of repetitions for systematic sampling')
+
+def main():
+
+if __name__ == '__main__':
+    main()
