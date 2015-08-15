@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 import argparse, sys
-from itertools import count
+from itertools import count, repeat
 from random import randint
 
 def simple_random(n, fp):
@@ -34,9 +34,9 @@ def systematic(n, fp, repetitions = 1):
     if interval == 0:
         interval = 1
 
-    offset_adjustments = list(repeat(randint(0, interval), repetitions))
+    offset_adjustments = list(sorted(repeat(randint(0, interval), repetitions)))
     for base_offset in range(file_start, file_end, interval):
-        offset_adjustment in offset_adjustments:
+        for offset_adjustment in offset_adjustments:
             offset = base_offset + offset_adjustment
             fp.seek(offset)
             fp.readline()

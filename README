@@ -86,6 +86,14 @@ various modules; printing the help takes almost as long as running the sample.
     user    0m0.129s
     sys     0m0.021s
 
+So even a pretty big sample is still fast to run. ::
+
+    $ time sample-lines -n 2000 -m systematic -r 50 big-file.csv > /dev/null
+
+    real    0m2.695s
+    user    0m2.435s
+    sys     0m0.231s
+
 Alternatives
 --------------
 Use `sample <https://github.com/jeroenjanssens/data-science-at-the-command-line/blob/master/tools/sample>`_
