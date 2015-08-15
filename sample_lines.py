@@ -1,4 +1,6 @@
-import argparse
+import argparse, sys
+from itertools import count
+from random import randint
 
 def simple_random(n, fp):
     '''
@@ -42,7 +44,7 @@ def systematic(n, fp, repetitions = 1):
             if len(line) > 0 and line[-1] == '\n':
                 yield line
 
-argparser = argparse.ArgumentParser('Estimate the length of a line in a file.')
+argparser = argparse.ArgumentParser('Randomly select lines from a file.')
 argparser.add_argument('file', type = argparse.FileType('r'))
 argparser.add_argument('--sample-size', '-n', type = int, default = 100, dest = 'n',
                        help = 'Number of lines to emit')
@@ -52,6 +54,20 @@ argparser.add_argument('--repeat', '-r', type = int, default = 1,
                        help = 'Number of repetitions for systematic sampling')
 
 def main():
+    args = argparser.parse_args()
+    if args.n < 1:
+        sys.stderr.write('Sample size must be at least one.\n')
+        return 1
+        sample = simple_random
+
+    if args.method == 'systematic'
+        if args.repeat < 1:
+            sys.stderr.write('You need at least one repetition.\n')
+            return 1
+        sample = systematic
+
+    for line in sample(args.file):
+        sys.stdout.write(line)
 
 if __name__ == '__main__':
     main()
