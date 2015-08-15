@@ -7,7 +7,7 @@ setup(name='sample-lines',
       description='Sample lines from a file.',
       url='http://dada.pink/sample-lines/',
       py_modules=['sample_lines'],
-      version='0.0.3',
+      version='0.0.4',
       license='LGPL',
       entry_points = {'console_scripts': ['sample-lines = sample_lines:main']},
 )
