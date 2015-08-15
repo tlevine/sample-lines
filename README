@@ -41,7 +41,7 @@ Consider this 1-gigabyte CSV file. ::
     $ wc big-file.csv
      2388430 27673790 1071895374 big-file.csv
 
-Running `wc` took three seconds. ::
+Running ``wc`` took three seconds. ::
 
     time wc big-file.csv
      2388430 27673790 1071895374 big-file.csv
