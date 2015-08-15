@@ -1,4 +1,4 @@
-def srs(n, fp):
+def simple_random(n, fp):
     '''
     with replacement
 
