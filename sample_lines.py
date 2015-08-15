@@ -11,7 +11,8 @@ def simple_random(n, fp):
     the appended data are ignored for the sampling.
     '''
     file_start = fp.tell()
-    file_end = fp.seek(0, 2)
+    fp.seek(0, 2)
+    file_end = fp.tell()
     
     lines_emitted = 0
     for i in count():
@@ -29,7 +30,9 @@ def simple_random(n, fp):
 
 def systematic(n, fp, repetitions = 1):
     file_start = fp.tell()
-    file_end = fp.seek(0, 2)
+    fp.seek(0, 2)
+    file_end = fp.tell()
+    print(file_start, file_end)
     interval = int((file_end - file_start) / n)
     if interval == 0:
         interval = 1
