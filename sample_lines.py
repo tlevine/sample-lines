@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 import argparse, sys
 from itertools import count
 from random import randint
@@ -60,7 +61,7 @@ def main():
         return 1
         sample = simple_random
 
-    if args.method == 'systematic'
+    if args.method == 'systematic':
         if args.repeat < 1:
             sys.stderr.write('You need at least one repetition.\n')
             return 1
