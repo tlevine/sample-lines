@@ -59,13 +59,16 @@ def main():
     if args.n < 1:
         sys.stderr.write('Sample size must be at least one.\n')
         return 1
-        sample = simple_random
 
     if args.method == 'systematic':
         if args.repeat < 1:
             sys.stderr.write('You need at least one repetition.\n')
             return 1
-        sample = systematic
+        def sample(fp):
+            return systematic(args.n, fp, repetitions = args.repeat)
+    else:
+        def sample(fp):
+            return simple_random(args.n, fp)
 
     for line in sample(args.file):
         sys.stdout.write(line)
