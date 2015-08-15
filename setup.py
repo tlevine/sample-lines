@@ -9,5 +9,5 @@ setup(name='sample-lines',
       py_modules=['sample_lines'],
       version='0.0.1',
       license='LGPL',
-      entry_points = {'console_scripts': ['sample_lines = sample_lines:cli']},
+      entry_points = {'console_scripts': ['sample-lines = sample_lines:main']},
 )
